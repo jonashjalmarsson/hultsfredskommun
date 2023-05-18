@@ -88,6 +88,7 @@
                 text-align: center;
                 padding: 0 20px;
                 // font-size: 1.5em;
+                border-radius: 0 0 3px 3px;
                 a {
                     color: #fff;
                     text-decoration: none;
@@ -116,7 +117,7 @@
                 .bubble-overlay {
                     top: 0;
                     height: 100%;
-    
+                    border-radius: 3px;
                     .title {
                         font-size: 1.5em;
                     }
