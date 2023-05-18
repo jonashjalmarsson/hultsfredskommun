@@ -97,6 +97,10 @@ class DriftStorning {
                     var id = $(this).parent().attr('data-id');
                     window.localStorage.setItem(id, Date());
                     $(this).parent().hide();
+                    // hide close all if less then one left
+                    if ($('.driftstorning:visible').length < 2) {
+                        $('.close_all_wrapper').hide();
+                    }
                 });
                 if (driftstorningar_count > 1) {
                     $('#" . $this->id. "').prepend('<div class=\"close_all_wrapper\"><a class=\"close_all\">Stäng alla</a></div>');
