@@ -2544,7 +2544,7 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
 	 */
 	
 	// if sortering is set in category
-	if ($orderby == "" && $cat != "" && function_exists('get_field') && get_field("sortering", "category_" . $cat) != 'none'  ) {
+	if ($orderby == "" && $cat != "" && function_exists('get_field') && !empty(get_field("sortering", "category_" . $cat)) && get_field("sortering", "category_" . $cat) != 'none'  ) {
 		switch (get_field("sortering", "category_".$cat)) {
 			case 'date_asc':
 				$args['orderby'] = 'date';
