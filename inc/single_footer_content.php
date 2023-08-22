@@ -18,9 +18,11 @@
 					</span>
 				</li>
 			<?php endif; // End if $tags_list ?>
+			<?php /*
 			<li class="editor vcard author"><span class="fn">Sidansvarig: <a class="gtm-footer-email-link" href="mailto:<?php the_author_meta('user_email',$post->post_author); ?>" title="E-post till <?php the_author_meta('display_name',$post->post_author); ?>"><?php the_author_meta('display_name',$post->post_author); ?></a>
-</span> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
-			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
+			</span></li> 
+			*/ ?>
+			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?> <?php edit_post_link( "Redigera inl&auml;gg", " (", ")" ); ?></li>
 			<?php /*if (function_exists("get_field") && get_field("hk_synonym") != "") : ?>
 			<li class="synonym">Synonymer: <?php echo get_field("hk_synonym"); ?></a></li>
 			<?php endif;*/ ?>
