@@ -15,7 +15,7 @@ add_action('init', 'hk_contacts_init');
 function hk_contacts_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
-		$user_can_edit = (!get_field('user_permissions_hk_kontakter', 'options') || get_field('user_can_edit_hk_kontakter', 'user_' . get_current_user_id())) ? true : false;
+		$user_can_edit = hk_perm::kontakter();
 
 		register_post_type( 'hk_kontakter',
 			array(

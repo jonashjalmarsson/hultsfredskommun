@@ -6,7 +6,7 @@ add_action('init', 'hk_forum_init');
 function hk_forum_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
-        $user_can_edit = (!get_field('user_permissions_hk_forum', 'options') || get_field('user_can_edit_hk_forum', 'user_' . get_current_user_id())) ? true : false;
+        $user_can_edit = hk_perm::forum();
 
 		register_post_type( 'hk_forum',
 			array(

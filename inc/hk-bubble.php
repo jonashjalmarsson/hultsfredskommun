@@ -6,7 +6,7 @@ add_action('init', 'hk_bubble_init');
 function hk_bubble_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
-        $user_can_edit = (!get_field('user_permissions_hk_bubble', 'options') || get_field('user_can_edit_hk_bubble', 'user_' . get_current_user_id())) ? true : false;
+        $user_can_edit = hk_perm::bubble();
 
 		register_post_type( 'hk_bubble',
 			array(

@@ -29,7 +29,7 @@ function hk_acf_op_init() {
 			'capability'	=> 'administrator',
 			'redirect'		=> false
 		));
-		$user_can_edit = (!get_field('user_permissions_driftstorningar', 'options') || get_field('user_can_edit_driftstorningar', 'user_' . get_current_user_id())) ? true : false;
+		$user_can_edit = hk_perm::driftstorningar();
 		if ($user_can_edit) {	
 			acf_add_options_sub_page(array(
 				'page_title' 	=> 'Driftstörningar',

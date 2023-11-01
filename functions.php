@@ -69,6 +69,8 @@ function mytheme_admin_bar_render() {
 add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
 /* END REMOVE COMMENTS */
 
+// Grab permissions.
+require( get_template_directory() . '/inc/permissions.php' );
 
 // Grab hk option page.
 require( get_template_directory() . '/inc/hk-option-page.php' );
@@ -1170,7 +1172,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		if ($showAll) { $slideshowclass = "slideshow"; }
 		$countSlides = 0;
 		if (!$only_img) {
-			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+			$retValue .= "<div class='img-wrapper test ".$class."'><div class='$slideshowclass'>";
 		}
 		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
@@ -1179,6 +1181,10 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			$src = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize])) ? $image["sizes"][$thumbsize] : "";
 			$src_large = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize_large])) ? $image["sizes"][$thumbsize_large] : "";
 			
+			// replace /files/ with /wp-content/uploads/ to get correct path if src contain /files/
+			$src = str_replace("/files/","/wp-content/uploads/",$src);
+			$src_large = str_replace("/files/","/wp-content/uploads/",$src_large);
+
 			$srcset = '';
 			if (!empty($src_large)) {
 				$srcset = "srcset='$src 1x, $src_large 1.5x'";

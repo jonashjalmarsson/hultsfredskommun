@@ -5,7 +5,7 @@
 add_action('init', 'hk_quick_init');
 function hk_quick_init() {
 	// only if in admin and is administrator
-	$user_can_edit = (!get_field('user_permissions_hk_quick', 'options') || get_field('user_can_edit_hk_quick', 'user_' . get_current_user_id())) ? true : false;
+	$user_can_edit = hk_perm::quick();
 	
 	register_post_type( 'hk_quick',
 		array(
