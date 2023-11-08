@@ -25,7 +25,7 @@ function hk_contacts_init() {
 					'description' => 'L&auml;gg till en kontakt i kontaktbanken.'
 				),
 				'public' => true,
-				'has_archive' => true,
+				'has_archive' => false,
 				'rewrite' => array('slug' => 'kontakt'),
 				'show_ui' => $user_can_edit,
 				'show_in_menu' => $user_can_edit,
