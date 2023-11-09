@@ -579,7 +579,7 @@ function hk_admin_posts_filter_restrict_manage_posts()
 <select name="author">
 <option value="">Författare</option>
 <?php
-    $current = $_REQUEST['author'];
+    $current = isset($_REQUEST['author']) ? $_REQUEST['author'] : '';
     foreach ($fields as $field) {
         if (substr($field[0],0,1) != "_"){
         printf
