@@ -25,7 +25,81 @@ function hk_theme_options_do_page() {
 			<?php settings_fields('hk_theme_options_options'); ?>
 			<?php $options = get_option('hk_theme'); ?>
 
+<?php
+/*
+// Loop through all posts and get description, featured image and all meta fields
+function hk_get_all_posts() {
+	$posts = get_posts( array(
+		'posts_per_page' => -1,
+		'post_type' => 'post',
+		'post_status' => 'publish',
+		'orderby' => 'title',
+		'order' => 'ASC'
+	) );
+	$all_posts = array();
+	foreach ( $posts as $post ) {
+		$all_posts[$post->ID] = array(
+			'title' => $post->post_title,
+			'description' => $post->post_content,
+			'featured_image' => get_the_post_thumbnail_url( $post->ID, 'full' ),
+			'featured_image_id' => get_post_thumbnail_id( $post->ID ),
+		);
+		$meta = get_post_meta( $post->ID );
+		foreach ( $meta as $key => $value ) {
+			$all_posts[$post->ID][$key] = $value[0];
+		}
+	}
 
+	// // loop through all media files and get id and filename and see if it is used somewhere in all_posts
+	$media = get_posts( array(
+		'posts_per_page' => -1,
+		'post_type' => 'attachment',
+		'post_status' => 'inherit',
+		'orderby' => 'title',
+		'order' => 'ASC'
+	) );
+	$all_media = array();
+	foreach ( $media as $m ) {
+		$all_media[$m->ID] = array(
+			'filename' => basename( get_attached_file( $m->ID ) ),
+			'used' => false,
+		);
+	}
+	
+	// check if any media is used in all_posts
+	foreach ( $all_media as $media_id => $media ) {
+		foreach ( $all_posts as $post_id => $post ) {
+			foreach ( $post as $key => $value ) {
+				if ( strpos( $value, $media['filename'] ) !== false ) {
+					$all_media[$media_id]['used'] = true;
+				} 
+				// check if matche media_id
+				else if ( strpos( $value, $media_id ) !== false ) {
+					$all_media[$media_id]['used'] = true;
+				}
+			}
+			
+		}
+	}
+
+	// // print media, show filename and if it is used or not
+	// foreach ( $all_media as $media_id => $media ) {
+	// 	echo "<p>";
+	// 	echo "<a href='" . wp_get_attachment_url( $media_id ) . "' target='_blank'>" . $media['filename'] . "</a>";
+	// 	if ( $media['used'] ) {
+	// 		echo " <b>USED</b>";
+	// 	}
+	// 	else {
+	// 		echo " <b>NOT USED</b>";
+	// 	}
+	// 	echo "</p>";
+	// }
+	// return $all_posts;
+}
+
+hk_get_all_posts();
+*/
+?>
 
 			<a href="#sidhuvud">Sidhuvud</a>
 			<a href="#meddelande">Meddelande</a>

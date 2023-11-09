@@ -108,6 +108,12 @@ require( get_template_directory() . '/inc/hk-forum.php' );
 // Grab hk bubble
 require( get_template_directory() . '/inc/hk-bubble.php' );
 
+if (is_admin()) {
+	// Grab hk contacts helper
+	require( get_template_directory() . '/admin/hk-contacts-helper.php' );
+	require( get_template_directory() . '/admin/hk-contacts-columns.php' );
+}
+
 /*
  * Synpunkt shortcode
  */
