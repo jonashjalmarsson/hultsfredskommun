@@ -1188,8 +1188,11 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			$src_large = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize_large])) ? $image["sizes"][$thumbsize_large] : "";
 			
 			// replace /files/ with /wp-content/uploads/ to get correct path if src contain /files/
-			$src = str_replace("/files/","/wp-content/uploads/",$src);
-			$src_large = str_replace("/files/","/wp-content/uploads/",$src_large);
+			// check if hostname is anstalld.hultsfred.se
+			if ($_SERVER['SERVER_NAME'] == "anstalld.hultsfred.se") {
+				$src = str_replace("/files/","/wp-content/uploads/",$src);
+				$src_large = str_replace("/files/","/wp-content/uploads/",$src_large);
+			}
 
 			$srcset = '';
 			if (!empty($src_large)) {
