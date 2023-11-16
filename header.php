@@ -165,3 +165,16 @@ if (empty($lattlast) && is_single()) {
 	
 	<div id="main" class="main">
 	<div class="main-wrapper">
+		
+	<?php
+
+
+// check if hidden page
+if ((is_single() && hk_check_if_post_is_hidden(get_the_ID()))
+|| (is_category() && hk_check_if_cat_is_hidden($cat))) {
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	get_template_part( 404 ); exit();
+}
+

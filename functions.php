@@ -1610,6 +1610,25 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 	return array($parent_category, $sub_parent_category, $category);
 }
 
+function hk_check_if_post_is_hidden($post_id) {
+	$options = get_option("hk_theme");
+	$hidden_cat = $options["hidden_cat"];
+	$categories_list = get_the_category($post_id);
+	foreach($categories_list as $item) {
+		if ($item->cat_ID == $hidden_cat || hk_getTopMenuParent($item->cat_ID) == $hidden_cat) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function hk_check_if_cat_is_hidden($cat) {
+	$options = get_option("hk_theme");
+	$hidden_cat = $options["hidden_cat"];
+	
+	return ($cat == $hidden_cat || hk_getTopMenuParent($cat) == $hidden_cat);
+}
+
 // get parents from category, returns array(topmenucategory, submenucategory, the category)
 function hk_get_parent_categories_from_cat($cat) {
 	$parent_category = hk_getTopMenuParent($cat);
