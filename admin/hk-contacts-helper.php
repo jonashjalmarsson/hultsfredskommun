@@ -128,9 +128,10 @@ class HK_Contacts_Helper {
                         continue;
                     }
                     // get kontaktnamn value from shortcode
-                    $pattern = '/kontaktnamn="(.*?)"/';
+                    $pattern = '/kontaktnamn=([a-zA-Z0-9\-\"]+)/';
                     preg_match_all( $pattern, $shortcode, $matches );
                     $kontaktnamn = $matches[1][0];
+                    $kontaktnamn = str_replace('"', '', $kontaktnamn);
                     // get hk_kontakter post with title = kontaktnamn
                     if (!empty($kontaktnamn)) {
                         $get_post_args =array(
